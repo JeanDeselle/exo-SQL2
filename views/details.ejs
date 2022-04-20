@@ -1,0 +1,49 @@
+<h1>Bon de commande</h1>
+<a href="/">retour</a>
+
+<div>
+	<% customer.forEach(element => { %>
+	<h2><%= element.customerName %></h2>
+	<h3><%= element.contactFirstName %></h3>
+	<p><%= element.contactLastName %></p>
+	<p><%= element.addressLine1 %></p>
+	<% }) %>
+</div>
+
+<h2>Bon de commande n <%= orderNumber %></h2>
+<table class="standard-table">
+	<thead>
+		<tr>
+			<th>Produit</th>
+			<th>Prix unitaire</th>
+			<th>Quantité</th>
+			<th>Prix total</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% sql.forEach(element => { %>
+		<tr>
+			<td><%= element.productName %></td>
+			<td><%= element.priceEach %></td>
+			<td><%= element.quantityOrdered %></td>
+			<td><%= element.priceEach * element.quantityOrdered%></td>
+		</tr>
+		<% }) %>
+	</tbody>
+	<tfoot>
+		<% montantHC.forEach(element => { %>
+		<tr>
+			<td>Montant total HT</td>
+			<td><%= element.MontantHC %></td> 
+		</tr>
+        <tr>
+            <td>TVA (20%)</td>
+            <td> <%= element.MontantHC * 0.2 %></td>
+        </tr>
+        <tr>
+            <td>Montant total TTC</td>
+            <td> <%= element.MontantHC * 0.2  + element.MontantHC  %></td>
+        </tr>
+		<% }) %>
+	</tfoot>
+</table>

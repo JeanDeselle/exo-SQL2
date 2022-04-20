@@ -1,0 +1,24 @@
+<table class="standard-table">
+	<thead>
+		<tr>
+			<th>Commande</th>
+			<th>Date de la commande</th>
+			<th>Date de livraison</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% results.forEach(element => { %>
+            <tr class="ligne">
+                <td>
+                    <a href=<%= '/product/'+ element.orderNumber %> >
+                        <%= element.orderNumber %>
+                    </a>
+                </td>
+                <td><%= element.orderDate %></td>
+                <td><%= element.shippedDate %></td>
+                <td><%= element.status %></td>
+            </tr>
+		<% }) %>
+	</tbody>
+</table>
